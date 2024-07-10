@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/resources">
+        <file>assets/koala_dark.png</file>
+        <file>assets/koala_light.png</file>
+    </qresource>
+</RCC>

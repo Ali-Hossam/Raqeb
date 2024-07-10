@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>MonitorWindow.qml</file>
+        <file>RoundedButton.qml</file>
+    </qresource>
+</RCC>
