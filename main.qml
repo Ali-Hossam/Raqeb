@@ -1,13 +1,14 @@
-import QtQuick 2.15
-import QtQuick.Window 2.15
-import Qt.labs.platform 1.1
+import QtQuick
+import QtQuick.Window
+import Qt.labs.platform
 import QtQuick.Controls
+import QtQuick.Effects
 import MouseTracker
 
 Window {
     id: root
-    width: 450
-    height: 600
+    width: 450 + shadowOffset
+    height: 600 + shadowOffset
     visible: true
     color: "transparent"
     flags: Qt.FramelessWindowHint | Qt.Window
@@ -16,11 +17,66 @@ Window {
     minimumHeight: height; maximumHeight: height
     minimumWidth: width; maximumWidth: width
 
-    MonitorWindow {
-        width: parent.width
-        height: parent.height
+    property bool isDarkMode_ : true
+    property int cornerRadius : 20
+    property int shadowOffset : 10
+
+    TopBar {
+        id: topBar
+        width: parent.width - shadowOffset
+        height: 34
+        topLeftRadius: cornerRadius
+        topRightRadius: cornerRadius
+        isDarkMode: isDarkMode_
+
+        Connections {
+            function onMoveCoord(xOffset, yOffset) {
+                root.x += xOffset
+                root.y += yOffset
+            }
+        }
     }
 
+    MonitorWindow {
+        id: mainWindow
+        width: parent.width - shadowOffset
+        height: parent.height - topBar.height - shadowOffset
+        y: topBar.height
+        isDarkMode: isDarkMode_
+        bottomLeftRadius: cornerRadius
+        bottomRightRadius: cornerRadius
+
+        Connections {
+            function onToggleDarkMode() {
+                isDarkMode_ = !isDarkMode_
+            }
+        }
+    }
+
+
+    // Create shadow for the main window and topBar
+    MultiEffect {
+        source: mainWindow
+        anchors.fill: mainWindow
+        shadowBlur: 0.5
+        shadowOpacity: 0.2
+        shadowEnabled: true
+        shadowColor: "black"
+        shadowHorizontalOffset: 4
+        shadowVerticalOffset: 4
+    }
+
+
+    // MultiEffect {
+    //     source: topBar
+    //     anchors.fill: topBar
+    //     shadowBlur: 0.5
+    //     shadowOpacity: 0.2
+    //     shadowEnabled: true
+    //     shadowColor: "black"
+    //     shadowHorizontalOffset: 4
+    //     shadowVerticalOffset: 4
+    // }
 
     // ------------------------------------------------------------------
     // DELETE LATER
@@ -57,15 +113,6 @@ Window {
         }
     }
 
-    // // Separate window for displaying the rectangle
-    // Window {
-    //     id: rectangleWindow
-    //     visible: false
-    //     width: 300
-    //     height: 200
-    //     title: qsTr("Rectangle Window")
 
-    //     MonitorWindow {}
-    // }
-
+    // the shadow fills the root window !!!
 }

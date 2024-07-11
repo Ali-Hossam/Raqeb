@@ -2,5 +2,10 @@
     <qresource prefix="/resources">
         <file>assets/koala_dark.png</file>
         <file>assets/koala_light.png</file>
+        <file>assets/moon.png</file>
+        <file>assets/star.png</file>
+        <file>assets/moon.svg</file>
+        <file>assets/moon1.svg</file>
+        <file>assets/sun1.svg</file>
     </qresource>
 </RCC>

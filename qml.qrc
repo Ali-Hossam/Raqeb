@@ -3,5 +3,7 @@
         <file>main.qml</file>
         <file>MonitorWindow.qml</file>
         <file>RoundedButton.qml</file>
+        <file>TopBar.qml</file>
+        <file>Colors.qml</file>
     </qresource>
 </RCC>
