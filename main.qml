@@ -1,3 +1,9 @@
+/*
+system monitor widget should have the following:
+1. Usage (CPU - Memory - GPU - Network - Disk)
+2. Temperature (CPU - GPU)
+*/
+
 import QtQuick
 import QtQuick.Window
 import Qt.labs.platform
@@ -8,7 +14,7 @@ import MouseTracker
 Window {
     id: root
     width: 450 + shadowOffset
-    height: 600 + shadowOffset
+    height: 680 + shadowOffset
     visible: true
     color: "transparent"
     flags: Qt.FramelessWindowHint | Qt.Window
@@ -18,13 +24,13 @@ Window {
     minimumWidth: width; maximumWidth: width
 
     property bool isDarkMode_ : true
-    property int cornerRadius : 20
+    property int cornerRadius : 15
     property int shadowOffset : 10
 
     TopBar {
         id: topBar
         width: parent.width - shadowOffset
-        height: 34
+        height: 36
         topLeftRadius: cornerRadius
         topRightRadius: cornerRadius
         isDarkMode: isDarkMode_
@@ -33,6 +39,12 @@ Window {
             function onMoveCoord(xOffset, yOffset) {
                 root.x += xOffset
                 root.y += yOffset
+            }
+        }
+
+        Connections {
+            function onToggleDarkMode() {
+                isDarkMode_ = !isDarkMode_
             }
         }
     }
@@ -45,16 +57,10 @@ Window {
         isDarkMode: isDarkMode_
         bottomLeftRadius: cornerRadius
         bottomRightRadius: cornerRadius
-
-        Connections {
-            function onToggleDarkMode() {
-                isDarkMode_ = !isDarkMode_
-            }
-        }
     }
 
 
-    // Create shadow for the main window and topBar
+    // Create shadow for the main window
     MultiEffect {
         source: mainWindow
         anchors.fill: mainWindow
@@ -67,16 +73,16 @@ Window {
     }
 
 
-    // MultiEffect {
-    //     source: topBar
-    //     anchors.fill: topBar
-    //     shadowBlur: 0.5
-    //     shadowOpacity: 0.2
-    //     shadowEnabled: true
-    //     shadowColor: "black"
-    //     shadowHorizontalOffset: 4
-    //     shadowVerticalOffset: 4
-    // }
+    MultiEffect {
+        source: topBar
+        anchors.fill: topBar
+        shadowBlur: 0.5
+        shadowOpacity: 0.2
+        shadowEnabled: true
+        shadowColor: "black"
+        shadowHorizontalOffset: 3
+        shadowVerticalOffset: 0
+    }
 
     // ------------------------------------------------------------------
     // DELETE LATER

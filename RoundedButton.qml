@@ -7,8 +7,10 @@ Rectangle {
     radius: width / 2
     color: "gray"
 
+    signal hover()
     MouseArea {
         anchors.fill: parent
+        hoverEnabled: true
         onPressed: {
             apply: buttonClicked()
         }

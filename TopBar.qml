@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Effects
+import QtQuick.Controls
 
 // Create a rectangle for the top bar
 Rectangle {
@@ -39,7 +40,8 @@ Rectangle {
 
     // define three buttons for (close, minimize, maximize)
     Row {
-        anchors.top: parent.top
+        id: controlButtonsRow
+        anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
         anchors.margins: 10
         spacing: 6
@@ -59,6 +61,44 @@ Rectangle {
             id: exitButton
             color: "#FF4B4B"
             onButtonClicked: Qt.quit()
+        }
+    }
+
+    signal toggleDarkMode()  // custom signal to change theme in main
+    // Create a switch button to switch between light and dark theme
+    Switch {
+        id: themeMode
+        anchors.right: controlButtonsRow.left
+        anchors.verticalCenter: parent.verticalCenter
+
+        onCheckedChanged:
+        {
+            toggleDarkMode();
+        }
+
+        indicator: Rectangle {
+            width: 50
+            height: 26
+            anchors.centerIn: parent
+            radius: 13
+            color: themeMode.checked ? "black" : "white"
+
+            Rectangle {
+                x: themeMode.checked ? parent.x + width / 2 + 2 : parent.x - width / 2 + 4
+                y: parent.height / 2 - height / 2
+                width: 24
+                height: 24
+                radius: 12
+                color: themeMode.checked ? "white" : "black"
+
+                Image {
+                    anchors.fill: parent
+                    anchors.margins: 5
+                    source: themeMode.checked ? "qrc:/resources/assets/moon1.svg" :
+                                                "qrc:/resources/assets/sun1.svg"
+                }
+
+            }
         }
     }
 }
