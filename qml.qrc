@@ -6,5 +6,6 @@
         <file>TopBar.qml</file>
         <file>Colors.qml</file>
         <file>CircularSlider.qml</file>
+        <file>UsageBar.qml</file>
     </qresource>
 </RCC>

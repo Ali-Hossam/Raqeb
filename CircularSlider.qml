@@ -80,7 +80,7 @@ Item {
             }
 
             // Set the font properties
-            ctx.font = "bold 25px Ubuntu";
+            ctx.font = "bold 20px Ubuntu";
             ctx.fillStyle = isDarkMode ? "white" : "black";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";

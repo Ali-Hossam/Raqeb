@@ -12,13 +12,14 @@ Rectangle {
     id: mainWindow
     color: isDarkMode ? themeColors.darkBkg : themeColors.lightBkg
 
-    // define three buttons for (close, minimize, maximize)
+    // define three panels (Temp panel, resources panel, disk panel)
     Column {
         id: controlButtonsRow
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.margins: margin
         spacing: margin
+
 
         Rectangle {
             id: tempPanel
@@ -44,6 +45,7 @@ Rectangle {
                     }
                 }
 
+                // Add a separator line between CPU/GPU sliders
                 Rectangle {
                     width: 2
                     height: tempPanel.height - 20
@@ -64,12 +66,9 @@ Rectangle {
                         label: "CPU"
                         sliderColor: compColor;
                         isDarkMode: mainWindow.isDarkMode
-
                     }
                 }
-
             }
-
         }
 
         Rectangle {
@@ -78,8 +77,79 @@ Rectangle {
             height: 250
             radius: panelRadius
             color: isDarkMode ? themeColors.grayDarkBkg : themeColors.grayWhiteBkg
-        }
 
+            Column {
+                anchors.fill: parent
+                spacing: margin
+                anchors.margins: margin + 4
+
+                Text {
+                    text: "Resources"
+                    font.family: "Ubuntu"
+                    font.bold: true
+                    font.pointSize: 12
+                    color: isDarkMode ? "white" : "black"
+                    anchors.horizontalCenter:  parent.horizontalCenter
+                }
+
+                Column{
+                    spacing: 5
+                    Text {
+                        text: "cpu"
+                        font.family: "Ubuntu"
+                        font.bold: false
+                        font.pointSize: 12
+                        color: isDarkMode ? "white" : "black"
+                        anchors.left: parent.left
+                    }
+
+                    UsageBar {
+                        themeColor: compColor
+                        isDarkMode: isDarkMode
+                        width: resourcesPanel.width - 30
+                        anchors.left: parent.left
+                    }
+                }
+
+                Column {
+                    spacing: 5
+                    Text {
+                        text: "memory"
+                        font.family: "Ubuntu"
+                        font.bold: false
+                        font.pointSize: 12
+                        color: isDarkMode ? "white" : "black"
+                        anchors.left: parent.left
+                    }
+
+                    UsageBar {
+                        themeColor: compColor
+                        isDarkMode: isDarkMode
+                        width: resourcesPanel.width - 30
+                        anchors.left: parent.left
+                    }
+                }
+
+                Column {
+                    spacing: 5
+                    Text {
+                        text: "gpu"
+                        font.family: "Ubuntu"
+                        font.bold: false
+                        font.pointSize: 12
+                        color: isDarkMode ? "white" : "black"
+                        anchors.left: parent.left
+                    }
+
+                    UsageBar {
+                        themeColor: compColor
+                        isDarkMode: isDarkMode
+                        width: resourcesPanel.width - 30
+                        anchors.left: parent.left
+                    }
+                }
+            }
+        }
         Rectangle {
             id: diskPanel
             width: mainWindow.width - margin * 2
