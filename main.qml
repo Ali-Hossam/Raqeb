@@ -14,7 +14,7 @@ import MouseTracker
 Window {
     id: root
     width: 450 + shadowOffset
-    height: 680 + shadowOffset
+    height: 720 + shadowOffset
     visible: true
     color: "transparent"
     flags: Qt.FramelessWindowHint | Qt.Window
@@ -83,6 +83,7 @@ Window {
         shadowHorizontalOffset: 3
         shadowVerticalOffset: 0
     }
+
 
     // ------------------------------------------------------------------
     // DELETE LATER

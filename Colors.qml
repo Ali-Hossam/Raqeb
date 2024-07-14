@@ -1,4 +1,4 @@
-import QtQuick 2.15
+import QtQuick
 
 Item {
     id: colors
@@ -28,5 +28,42 @@ Item {
     property var magentaColorsL : ["#FF66FF", "#B300B3", "#660066"]
     property var whiteColorsL : ["#333333", "#666666", "#999999"]
 
+    // availabe themes colors (dark / light)
+    property var themesLight : [
+        redColorsL,
+        greenColorsL,
+        yellowColorsL,
+        blueColorsL,
+        magentaColorsL,
+        whiteColorsL,]
+
+    property var themesDark : [
+        redColorsD,
+        greenColorsD,
+        yellowColorsD,
+        blueColorsD,
+        magentaColorsD,
+        whiteColorsD,]
+
+
+
+    // Palette Button colors
+    property var pColorsD : [
+        "#ff6666",
+        "#ffff66",
+        "#66ff66",
+        "#66ffff",
+        "#6666ff",
+        "#ff66ff"
+    ];
+
+    property var pColorsL: [
+        "#ff0000",
+        "#ffff00",
+        "#00ff00",
+        "#00ffff",
+        "#0000ff",
+        "#ff00ff"
+    ]
 
 }

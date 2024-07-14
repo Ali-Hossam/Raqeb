@@ -24,15 +24,28 @@ Rectangle {
         Rectangle {
             id: tempPanel
             width: mainWindow.width - margin * 2
-            height: 200
+            height: 220
             radius: panelRadius
             color: isDarkMode ? themeColors.grayDarkBkg : themeColors.grayWhiteBkg
 
-            Row {
+            Column {
                 anchors.fill: parent
+                anchors.topMargin: margin + 4
+
+                Text {
+                    id: tempText
+                    text: "Temperature"
+                    font.family: "Ubuntu"
+                    font.bold: true
+                    font.pointSize: 12
+                    color: isDarkMode ? "white" : "black"
+                    anchors.horizontalCenter:  parent.horizontalCenter
+                }
+
+            Row {
                 Rectangle {
                     width: tempPanel.width / 2 - 2
-                    height: tempPanel.height
+                    height: tempPanel.height - tempText.height - 25
                     color: "#00FFFFFF"
                     CircularSlider {
                         anchors.bottom: parent.bottom
@@ -48,7 +61,7 @@ Rectangle {
                 // Add a separator line between CPU/GPU sliders
                 Rectangle {
                     width: 2
-                    height: tempPanel.height - 20
+                    height: 120
                     anchors.verticalCenter: parent.verticalCenter
                     radius: width / 2
                     color: isDarkMode ? "gray" : "darkgray";
@@ -56,7 +69,7 @@ Rectangle {
 
                 Rectangle {
                     width: tempPanel.width / 2 - 2
-                    height: tempPanel.height
+                    height: tempPanel.height - tempText.height - 25
                     color: "#00FFFFFF"
                     CircularSlider {
                         anchors.bottom: parent.bottom
@@ -70,17 +83,18 @@ Rectangle {
                 }
             }
         }
+        }
 
         Rectangle {
             id: resourcesPanel
             width: mainWindow.width - margin * 2
-            height: 250
+            height: 230
             radius: panelRadius
             color: isDarkMode ? themeColors.grayDarkBkg : themeColors.grayWhiteBkg
 
             Column {
                 anchors.fill: parent
-                spacing: margin
+                spacing: margin - 4
                 anchors.margins: margin + 4
 
                 Text {
@@ -153,9 +167,33 @@ Rectangle {
         Rectangle {
             id: diskPanel
             width: mainWindow.width - margin * 2
-            height: 150
+            height: 190
             radius: panelRadius
             color: isDarkMode ? themeColors.grayDarkBkg : themeColors.grayWhiteBkg
+
+            Column {
+                anchors.fill: parent
+                spacing: margin
+                anchors.margins: margin + 4
+
+                Text {
+                    text: "Disk Usage"
+                    font.family: "Ubuntu"
+                    font.bold: true
+                    font.pointSize: 12
+                    color: isDarkMode ? "white" : "black"
+                    anchors.horizontalCenter:  parent.horizontalCenter
+                }
+
+                PiePlot {
+                    height: parent.height - margin * 2.2
+                    radius: 60
+                    isDarkMode: mainWindow.isDarkMode
+                    theme: [themeColors.blueColorsD[1], themeColors.greenColorsD[1]]
+                }
+            }
+
+
         }
 
     }

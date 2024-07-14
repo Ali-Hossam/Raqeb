@@ -48,18 +48,22 @@ Rectangle {
 
         RoundedButton {
             id: minimizeButton
-            color: isDarkMode ? "#2DFF76" : "mediumseagreen"
+            mainColor : isDarkMode ? "#2DFF76" : "mediumseagreen"
+            hoverColor : "darkslategray"
             onButtonClicked: root.showMinimized()
         }
 
         RoundedButton {
             id: maximizeButton
-            color: isDarkMode ? "#FFF336" : "goldenrod"
+            mainColor: isDarkMode ? "#FFF336" : "goldenrod"
+            hoverColor: isDarkMode ? "#FFF336" : "goldenrod"
+
         }
 
         RoundedButton {
             id: exitButton
-            color: "#FF4B4B"
+            mainColor: "#FF4B4B"
+            hoverColor: "brown"
             onButtonClicked: Qt.quit()
         }
     }
@@ -98,7 +102,32 @@ Rectangle {
                                                 "qrc:/resources/assets/sun1.svg"
                 }
 
+                // add animation
+                Behavior on x {
+                    PropertyAnimation {
+                        duration: 500
+                        easing.type: Easing.OutBounce
+                    }
+                }
             }
         }
+    }
+
+    PaletteButton {
+        anchors.centerIn: parent
+        radius_: 12
+        bkgColor: topBar.color
+        paletteColors: isDarkMode ? themeColors.pColorsD : themeColors.pColorsL;
+
+        onButtonClicked: themesWindow.visible = !themesWindow.visible
+    }
+
+    ThemesWindow {
+        id: themesWindow
+        x: root.x + root.width / 2 - 50
+        y: root.y - 65
+        visible:false
+        bkgColor: topBar.color
+
     }
 }

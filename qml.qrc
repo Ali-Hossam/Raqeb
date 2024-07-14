@@ -7,5 +7,8 @@
         <file>Colors.qml</file>
         <file>CircularSlider.qml</file>
         <file>UsageBar.qml</file>
+        <file>PiePlot.qml</file>
+        <file>PaletteButton.qml</file>
+        <file>ThemesWindow.qml</file>
     </qresource>
 </RCC>
