@@ -10,11 +10,6 @@ Window {
 
     flags: Qt.FramelessWindowHint | Qt.Window
     property color bkgColor : "#000000"
-    signal circleClicked(int index)
-
-    Colors {
-        id: themes
-    }
 
     Rectangle {
         id: colorsRect
@@ -30,15 +25,15 @@ Window {
 
             columns: 3
             Repeater {
-                model: themes.themesLight.length // Repeater to create circles for each color
+                model: Colors.themesLight.length // Repeater to create circles for each color
 
                 Rectangle {
                     width: 16
                     height: width
                     radius: width/2
-                    color: isDarkMode ?
-                               themes.themesDark[index][1] :
-                               themes.themesLight[index][1] // Set color from themes.themesLight array
+                    color: Colors.isDarkMode ?
+                               Colors.themesDark[index][1] :
+                               Colors.themesLight[index][1] // Set color from themes.themesLight array
 
                     border.color: "transparent"
                     border.width: 3
@@ -46,12 +41,17 @@ Window {
                     MouseArea {
                         anchors.fill: parent
                         hoverEnabled: true
-                        onEntered: parent.border.color = "black"
+                        onEntered: parent.border.color = Colors.isDarkMode ? "white" : "black"
                         onExited: parent.border.color = "transparent"
 
                         onClicked: {
-                            colorWindow.circleClicked(index)
-                            console.log(index)
+                            Colors.themeIdx = index
+                            Colors.themeArr = Colors.isDarkMode ?
+                                                Colors.themesDark :
+                                                Colors.themesLight;
+
+                            Colors.theme = Colors.themeArr[Colors.themeIdx]
+                            colorWindow.close()
                         }
                     }
                 }

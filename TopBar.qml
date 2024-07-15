@@ -5,11 +5,7 @@ import QtQuick.Controls
 // Create a rectangle for the top bar
 Rectangle {
     id: topBar
-
-    property bool isDarkMode : true
-    Colors { id: themeColors }
-
-    color: isDarkMode ? themeColors.semiDarkBkg : themeColors.semiLightBkg
+    color: Colors.isDarkMode ? Colors.semiDarkBkg : Colors.semiLightBkg
 
     // Create mouse area to move the root window with the top bar
     // pass the x, y offsets in a signal
@@ -48,15 +44,15 @@ Rectangle {
 
         RoundedButton {
             id: minimizeButton
-            mainColor : isDarkMode ? "#2DFF76" : "mediumseagreen"
+            mainColor : Colors.isDarkMode ? "#2DFF76" : "mediumseagreen"
             hoverColor : "darkslategray"
             onButtonClicked: root.showMinimized()
         }
 
         RoundedButton {
             id: maximizeButton
-            mainColor: isDarkMode ? "#FFF336" : "goldenrod"
-            hoverColor: isDarkMode ? "#FFF336" : "goldenrod"
+            mainColor: Colors.isDarkMode ? "#FFF336" : "goldenrod"
+            hoverColor: Colors.isDarkMode ? "#FFF336" : "goldenrod"
 
         }
 
@@ -117,7 +113,7 @@ Rectangle {
         anchors.centerIn: parent
         radius_: 12
         bkgColor: topBar.color
-        paletteColors: isDarkMode ? themeColors.pColorsD : themeColors.pColorsL;
+        paletteColors: Colors.isDarkMode ? Colors.pColorsD : Colors.pColorsL;
 
         onButtonClicked: themesWindow.visible = !themesWindow.visible
     }
@@ -128,6 +124,22 @@ Rectangle {
         y: root.y - 65
         visible:false
         bkgColor: topBar.color
-
     }
+
+    FontLoader {
+        id: myFont
+        source: "qrc:/resources/assets/fonts/ruqaa.ttf"
+    }
+    Text {
+        x: 10
+        y: 0
+        text: "راقِب"
+        font.family: myFont.font.family
+        font.weight: myFont.font.weight
+        font.styleName: webFont.font.styleName
+        font.pixelSize: 30
+        color: Colors.isDarkMode ? "white" : "black"
+    }
+
 }
+

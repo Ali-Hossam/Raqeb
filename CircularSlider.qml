@@ -2,18 +2,20 @@ import QtQuick
 import QtQuick.Controls
 
 Item {
-    property int radius: 100
+    property int radius: 65     // outter circle radius
     property int sliderRadius: radius - 18
-    property string label : ""
+    property string label : ""  // label under the slider
     property var sliderColor : []
-    property bool isDarkMode : true
+    property bool isDarkMode : Colors.isDarkMode
 
+    // paint update
     onIsDarkModeChanged: sliderCirc.requestPaint()
+    onSliderColorChanged: sliderCirc.requestPaint()
 
     Canvas {
         id: sliderCirc
         anchors.fill: parent
-        property real currentAngle: 0   // slider current angle
+        property real currentAngle: 300   // slider current angle
         property int nextAngle: 0   // the request next angle of the slider
         property double angleOffset : Math.PI * 120 / 180  // to make slider starts at angle 120
 
@@ -37,7 +39,7 @@ Item {
                         centerX + 80, centerY
                         );
             gradient.addColorStop(0, sliderColor[0]);
-            gradient.addColorStop(0.4, sliderColor[1]);
+            gradient.addColorStop(0.5, sliderColor[1]);
             gradient.addColorStop(1, sliderColor[2]);
 
             // Draw arc with gradient and rounded edges
@@ -64,7 +66,7 @@ Item {
             var angleIncrement = (2 * Math.PI) / numDashes;
 
             ctx.strokeStyle = sliderColor[1];
-            ctx.lineWidth = 1;
+            ctx.lineWidth = 3;
 
             for (var i = 7; i < numDashes + 4; i++) {
                 var angle = i * angleIncrement;
@@ -81,11 +83,11 @@ Item {
 
             // Set the font properties
             ctx.font = "bold 16px Ubuntu";
-            ctx.fillStyle = isDarkMode ? "white" : "black";
+            ctx.fillStyle = Colors.isDarkMode ? "white" : "black";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
             // Draw the text
-            ctx.fillText(label, centerX, centerY + radius + 30);
+            ctx.fillText(label, centerX, centerY + radius + 24);
         }
     }
 
@@ -104,34 +106,55 @@ Item {
 
             } else if (sliderCirc.currentAngle > sliderCirc.nextAngle )
                 sliderCirc.currentAngle -= step; // decrement step
-                sliderCirc.requestPaint();            }
-        }
-
-
-    Column {
-        anchors.centerIn: parent
-
-        Button {
-            text: "I"
-            onClicked: {
-                if (sliderCirc.currentAngle <= 290) {
-                    sliderCirc.nextAngle = Math.min(sliderCirc.nextAngle + 10, 290); // Increment nextAngle by 10, but not exceed 360
-                    timer_.start();
-                } else {
-                    sliderCirc.currentAngle = 0;
-                    sliderCirc.nextAngle = 10;
-                    timer_.start();
-                }
-            }
-        }
-
-        Button {
-            text: "D"
-            onClicked: {
-                sliderCirc.nextAngle = Math.max(sliderCirc.nextAngle - 10, 0); // Increment nextAngle by 10, but not exceed 360
-                timer_.start();
-                console.log(isDarkMode)
-            }
+            sliderCirc.requestPaint();
         }
     }
+
+    // add temperature text
+    Text {
+        id: temperature
+        text: "100" + "°C"
+        font.bold: true
+        font.pointSize: 16
+        font.kerning: false
+        anchors.centerIn: parent
+        color: Colors.isDarkMode ? "white" : "black"
+    }
+
+    // add temperatuer icon image
+    IconImage {
+        source: "qrc:/resources/assets/temp.png"
+        x: temperature.x + 20
+        y: temperature.y - 20
+        width: 20
+        fillMode: Image.PreserveAspectFit
+        color: Colors.theme[1]
+    }
+
+    // Column {
+    //     anchors.centerIn: parent
+
+    //     Button {
+    //         text: "I"
+    //         onClicked: {
+    //             if (sliderCirc.currentAngle <= 290) {
+    //                 sliderCirc.nextAngle = Math.min(sliderCirc.nextAngle + 10, 290); // Increment nextAngle by 10, but not exceed 360
+    //                 timer_.start();
+    //             } else {
+    //                 sliderCirc.currentAngle = 0;
+    //                 sliderCirc.nextAngle = 10;
+    //                 timer_.start();
+    //             }
+    //         }
+    //     }
+
+    //     Button {
+    //         text: "D"
+    //         onClicked: {
+    //             sliderCirc.nextAngle = Math.max(sliderCirc.nextAngle - 10, 0); // Increment nextAngle by 10, but not exceed 360
+    //             timer_.start();
+    //             console.log(Colors.isDarkMode)
+    //         }
+    //     }
+    // }
 }

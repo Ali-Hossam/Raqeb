@@ -7,11 +7,10 @@ Rectangle {
 
     onBkgColorChanged: canvas.requestPaint()
 
-    width: radius_ * 2 + 5
+    width: radius_ * 2 + 10
     height : width
     radius: 4
     color: "transparent"
-
 
     signal buttonClicked()
 
@@ -63,7 +62,7 @@ Rectangle {
     MouseArea {
         anchors.fill: parent
         hoverEnabled: true
-        onEntered: parent.color = "#33FFFFFF"
+        onEntered: parent.color = Colors.isDarkMode ? "#33FFFFFF" : "gray";
         onExited: parent.color = "transparent"
         onPressed: {
             apply: buttonClicked()

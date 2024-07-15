@@ -9,6 +9,7 @@
         <file>UsageBar.qml</file>
         <file>PiePlot.qml</file>
         <file>PaletteButton.qml</file>
+				<file>qmldir</file>
         <file>ThemesWindow.qml</file>
     </qresource>
 </RCC>

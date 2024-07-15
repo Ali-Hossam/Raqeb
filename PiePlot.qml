@@ -5,9 +5,9 @@ Canvas {
     width: 300
     height: 100
 
-    property bool isDarkMode : true
     property int radius : 60
     property var theme : []
+    property bool isDarkMode : Colors.isDarkMode
 
     onIsDarkModeChanged: pie.requestPaint()
     onThemeChanged: pie.requestPaint()
@@ -69,7 +69,7 @@ Canvas {
             ctx.fill();
 
             // Draw legend text
-            ctx.fillStyle = isDarkMode ? "white" : "black";
+            ctx.fillStyle = Colors.isDarkMode ? "white" : "black";
             ctx.font = "12px Ubuntu";
             ctx.textAlign = "left";
             ctx.textBaseline = "middle";

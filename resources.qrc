@@ -7,5 +7,7 @@
         <file>assets/moon.svg</file>
         <file>assets/moon1.svg</file>
         <file>assets/sun1.svg</file>
+        <file>assets/temp.png</file>
+        <file>assets/fonts/ruqaa.ttf</file>
     </qresource>
 </RCC>

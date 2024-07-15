@@ -3,14 +3,12 @@ import QtQuick.Controls
 import QtQuick.Shapes
 
 Rectangle {
-    property bool isDarkMode : true
     property int margin : 10
-    Colors { id: themeColors }
-    property var compColor : isDarkMode ? themeColors.greenColorsD : themeColors.greenColorsL;
     property int panelRadius : 20
 
+
     id: mainWindow
-    color: isDarkMode ? themeColors.darkBkg : themeColors.lightBkg
+    color: Colors.isDarkMode ? Colors.darkBkg : Colors.lightBkg
 
     // define three panels (Temp panel, resources panel, disk panel)
     Column {
@@ -26,7 +24,7 @@ Rectangle {
             width: mainWindow.width - margin * 2
             height: 220
             radius: panelRadius
-            color: isDarkMode ? themeColors.grayDarkBkg : themeColors.grayWhiteBkg
+            color: Colors.isDarkMode ? Colors.grayDarkBkg : Colors.grayWhiteBkg
 
             Column {
                 anchors.fill: parent
@@ -38,7 +36,7 @@ Rectangle {
                     font.family: "Ubuntu"
                     font.bold: true
                     font.pointSize: 12
-                    color: isDarkMode ? "white" : "black"
+                    color: Colors.isDarkMode ? "white" : "black"
                     anchors.horizontalCenter:  parent.horizontalCenter
                 }
 
@@ -51,10 +49,8 @@ Rectangle {
                         anchors.bottom: parent.bottom
                         width: parent.width
                         height: parent.height + 20
-                        radius: 62
                         label: "GPU"
-                        sliderColor: compColor;
-                        isDarkMode: mainWindow.isDarkMode
+                        sliderColor: Colors.theme;
                     }
                 }
 
@@ -64,7 +60,7 @@ Rectangle {
                     height: 120
                     anchors.verticalCenter: parent.verticalCenter
                     radius: width / 2
-                    color: isDarkMode ? "gray" : "darkgray";
+                    color: Colors.isDarkMode ? "gray" : "darkgray";
                 }
 
                 Rectangle {
@@ -75,10 +71,8 @@ Rectangle {
                         anchors.bottom: parent.bottom
                         width: parent.width
                         height: parent.height + 20
-                        radius: 62
                         label: "CPU"
-                        sliderColor: compColor;
-                        isDarkMode: mainWindow.isDarkMode
+                        sliderColor: Colors.theme;
                     }
                 }
             }
@@ -90,7 +84,7 @@ Rectangle {
             width: mainWindow.width - margin * 2
             height: 230
             radius: panelRadius
-            color: isDarkMode ? themeColors.grayDarkBkg : themeColors.grayWhiteBkg
+            color: Colors.isDarkMode ? Colors.grayDarkBkg : Colors.grayWhiteBkg
 
             Column {
                 anchors.fill: parent
@@ -102,7 +96,7 @@ Rectangle {
                     font.family: "Ubuntu"
                     font.bold: true
                     font.pointSize: 12
-                    color: isDarkMode ? "white" : "black"
+                    color: Colors.isDarkMode ? "white" : "black"
                     anchors.horizontalCenter:  parent.horizontalCenter
                 }
 
@@ -113,13 +107,11 @@ Rectangle {
                         font.family: "Ubuntu"
                         font.bold: false
                         font.pointSize: 12
-                        color: isDarkMode ? "white" : "black"
+                        color: Colors.isDarkMode ? "white" : "black"
                         anchors.left: parent.left
                     }
 
                     UsageBar {
-                        themeColor: compColor
-                        isDarkMode: isDarkMode
                         width: resourcesPanel.width - 30
                         anchors.left: parent.left
                     }
@@ -132,13 +124,11 @@ Rectangle {
                         font.family: "Ubuntu"
                         font.bold: false
                         font.pointSize: 12
-                        color: isDarkMode ? "white" : "black"
+                        color: Colors.isDarkMode ? "white" : "black"
                         anchors.left: parent.left
                     }
 
                     UsageBar {
-                        themeColor: compColor
-                        isDarkMode: isDarkMode
                         width: resourcesPanel.width - 30
                         anchors.left: parent.left
                     }
@@ -151,13 +141,11 @@ Rectangle {
                         font.family: "Ubuntu"
                         font.bold: false
                         font.pointSize: 12
-                        color: isDarkMode ? "white" : "black"
+                        color: Colors.isDarkMode ? "white" : "black"
                         anchors.left: parent.left
                     }
 
                     UsageBar {
-                        themeColor: compColor
-                        isDarkMode: isDarkMode
                         width: resourcesPanel.width - 30
                         anchors.left: parent.left
                     }
@@ -169,7 +157,7 @@ Rectangle {
             width: mainWindow.width - margin * 2
             height: 190
             radius: panelRadius
-            color: isDarkMode ? themeColors.grayDarkBkg : themeColors.grayWhiteBkg
+            color: Colors.isDarkMode ? Colors.grayDarkBkg : Colors.grayWhiteBkg
 
             Column {
                 anchors.fill: parent
@@ -181,15 +169,14 @@ Rectangle {
                     font.family: "Ubuntu"
                     font.bold: true
                     font.pointSize: 12
-                    color: isDarkMode ? "white" : "black"
+                    color: Colors.isDarkMode ? "white" : "black"
                     anchors.horizontalCenter:  parent.horizontalCenter
                 }
 
                 PiePlot {
                     height: parent.height - margin * 2.2
                     radius: 60
-                    isDarkMode: mainWindow.isDarkMode
-                    theme: [themeColors.blueColorsD[1], themeColors.greenColorsD[1]]
+                    theme: Colors.piePlotThemes[Colors.themeIdx]
                 }
             }
 

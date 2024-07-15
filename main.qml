@@ -23,7 +23,6 @@ Window {
     minimumHeight: height; maximumHeight: height
     minimumWidth: width; maximumWidth: width
 
-    property bool isDarkMode_ : true
     property int cornerRadius : 15
     property int shadowOffset : 10
 
@@ -33,7 +32,6 @@ Window {
         height: 36
         topLeftRadius: cornerRadius
         topRightRadius: cornerRadius
-        isDarkMode: isDarkMode_
 
         Connections {
             function onMoveCoord(xOffset, yOffset) {
@@ -44,7 +42,11 @@ Window {
 
         Connections {
             function onToggleDarkMode() {
-                isDarkMode_ = !isDarkMode_
+                Colors.isDarkMode = !Colors.isDarkMode
+                Colors.themeArr = Colors.themeArr == Colors.themesDark ?
+                                    Colors.themesLight : Colors.themesDark;
+
+                Colors.theme = Colors.themeArr[Colors.themeIdx]
             }
         }
     }
@@ -54,7 +56,6 @@ Window {
         width: parent.width - shadowOffset
         height: parent.height - topBar.height - shadowOffset
         y: topBar.height
-        isDarkMode: isDarkMode_
         bottomLeftRadius: cornerRadius
         bottomRightRadius: cornerRadius
     }
@@ -85,40 +86,40 @@ Window {
     }
 
 
-    // ------------------------------------------------------------------
-    // DELETE LATER
-    // Track mouse position to show window when the tray icon is pressed
-    MouseTracker {
-        id: mouse_t
-    }
+    // // ------------------------------------------------------------------
+    // // DELETE LATER
+    // // Track mouse position to show window when the tray icon is pressed
+    // MouseTracker {
+    //     id: mouse_t
+    // }
 
-    // Create system Tray icon for the monitor widget
-    SystemTrayIcon {
-        id: monitorIcon
-        icon.mask: true
-        visible: true
-        icon.source: "qrc:/resources/assets/koala_dark.png"
+    // // Create system Tray icon for the monitor widget
+    // SystemTrayIcon {
+    //     id: monitorIcon
+    //     icon.mask: true
+    //     visible: true
+    //     icon.source: "qrc:/resources/assets/koala_dark.png"
 
 
-        menu: Menu {
-            MenuItem {
-                text: qsTr("SysWatch")
-                onTriggered:
-                {
-                    rectangleWindow.visible = true
-                    console.log(mouse_t.getGlobalMousePosition().x)
-                    console.log(mouse_t.getGlobalMousePosition().y)
-                    rectangleWindow.x = mouse_t.getGlobalMousePosition().x
-                    rectangleWindow.y =  mouse_t.getGlobalMousePosition().y
+    //     menu: Menu {
+    //         MenuItem {
+    //             text: qsTr("SysWatch")
+    //             onTriggered:
+    //             {
+    //                 rectangleWindow.visible = true
+    //                 console.log(mouse_t.getGlobalMousePosition().x)
+    //                 console.log(mouse_t.getGlobalMousePosition().y)
+    //                 rectangleWindow.x = mouse_t.getGlobalMousePosition().x
+    //                 rectangleWindow.y =  mouse_t.getGlobalMousePosition().y
 
-                }
-            }
-            MenuItem {
-                text: qsTr("Quit")
-                onTriggered: Qt.quit()
-            }
-        }
-    }
+    //             }
+    //         }
+    //         MenuItem {
+    //             text: qsTr("Quit")
+    //             onTriggered: Qt.quit()
+    //         }
+    //     }
+    // }
 
 
     // the shadow fills the root window !!!

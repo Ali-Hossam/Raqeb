@@ -6,8 +6,6 @@ Slider {
     id: control
     from: 1
     to: 100
-    property bool isDarkMode : true
-    property var themeColor : []
 
     background : Rectangle {
         x: control.leftPadding
@@ -17,7 +15,8 @@ Slider {
         width: control.availableWidth
         height: implicitHeight
         radius: 6
-        color: isDarkMode ? "dimgray" : "lightgray";
+
+        color: Colors.isDarkMode ? Colors.grayDarkBkg : "lightgray";
 
         Rectangle {
             width: control.visualPosition * parent.width + radius
@@ -60,7 +59,7 @@ Slider {
         radius: 6
         x: control.leftPadding + control.visualPosition * (control.availableWidth - width)
         y: control.topPadding + control.availableHeight / 2 - height / 2
-        color: themeColor[2];
+        color: Colors.isDarkMode ? Colors.theme[1] : Colors.theme[2];
 
     }
 }
