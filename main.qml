@@ -23,13 +23,15 @@ Window {
     minimumHeight: height; maximumHeight: height
     minimumWidth: width; maximumWidth: width
 
+    // main window corner radius and shadow offset
     property int cornerRadius : 15
     property int shadowOffset : 10
 
+    // define the top bar having control buttons, and logo
     TopBar {
         id: topBar
         width: parent.width - shadowOffset
-        height: 36
+        height: 40
         topLeftRadius: cornerRadius
         topRightRadius: cornerRadius
 
@@ -44,13 +46,14 @@ Window {
             function onToggleDarkMode() {
                 Colors.isDarkMode = !Colors.isDarkMode
                 Colors.themeArr = Colors.themeArr == Colors.themesDark ?
-                                    Colors.themesLight : Colors.themesDark;
+                            Colors.themesLight : Colors.themesDark;
 
                 Colors.theme = Colors.themeArr[Colors.themeIdx]
             }
         }
     }
 
+    // define the main window of the application
     MonitorWindow {
         id: mainWindow
         width: parent.width - shadowOffset
@@ -73,7 +76,7 @@ Window {
         shadowVerticalOffset: 4
     }
 
-
+    // create shadow for the top bar
     MultiEffect {
         source: topBar
         anchors.fill: topBar
@@ -85,41 +88,30 @@ Window {
         shadowVerticalOffset: 0
     }
 
+    // create system tray icon for the application
+    SystemTrayIcon {
+        id: monitorIcon
+        icon.mask: true
+        visible: true
+        icon.source: "qrc:/resources/assets/spy.png"
 
-    // // ------------------------------------------------------------------
-    // // DELETE LATER
-    // // Track mouse position to show window when the tray icon is pressed
-    // MouseTracker {
-    //     id: mouse_t
-    // }
+        menu: Menu {
+            MenuItem {
+                text: qsTr("Raqeb")
+                onTriggered:
+                {
+                    root.visible = true;
+                }
+            }
 
-    // // Create system Tray icon for the monitor widget
-    // SystemTrayIcon {
-    //     id: monitorIcon
-    //     icon.mask: true
-    //     visible: true
-    //     icon.source: "qrc:/resources/assets/koala_dark.png"
+            MenuSeparator {}
 
-
-    //     menu: Menu {
-    //         MenuItem {
-    //             text: qsTr("SysWatch")
-    //             onTriggered:
-    //             {
-    //                 rectangleWindow.visible = true
-    //                 console.log(mouse_t.getGlobalMousePosition().x)
-    //                 console.log(mouse_t.getGlobalMousePosition().y)
-    //                 rectangleWindow.x = mouse_t.getGlobalMousePosition().x
-    //                 rectangleWindow.y =  mouse_t.getGlobalMousePosition().y
-
-    //             }
-    //         }
-    //         MenuItem {
-    //             text: qsTr("Quit")
-    //             onTriggered: Qt.quit()
-    //         }
-    //     }
-    // }
+            MenuItem {
+                text: qsTr("Quit")
+                onTriggered: Qt.quit()
+            }
+        }
+    }
 
 
     // the shadow fills the root window !!!

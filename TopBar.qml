@@ -60,7 +60,7 @@ Rectangle {
             id: exitButton
             mainColor: "#FF4B4B"
             hoverColor: "brown"
-            onButtonClicked: Qt.quit()
+            onButtonClicked: root.visible = false
         }
     }
 
@@ -130,16 +130,17 @@ Rectangle {
         id: myFont
         source: "qrc:/resources/assets/fonts/ruqaa.ttf"
     }
+
     Text {
-        x: 10
-        y: 0
+        x: 15
+        y: -15
         text: "راقِب"
         font.family: myFont.font.family
         font.weight: myFont.font.weight
-        font.styleName: webFont.font.styleName
-        font.pixelSize: 30
+        font.styleName: myFont.font.styleName
+        font.pixelSize: 38
+        font.letterSpacing: 3
         color: Colors.isDarkMode ? "white" : "black"
     }
-
 }
 
