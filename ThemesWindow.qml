@@ -1,3 +1,7 @@
+/*
+This is the window that opens when the palette button is pressed
+*/
+
 import QtQuick
 import QtQuick.Effects
 
@@ -47,8 +51,8 @@ Window {
                         onClicked: {
                             Colors.themeIdx = index
                             Colors.themeArr = Colors.isDarkMode ?
-                                                Colors.themesDark :
-                                                Colors.themesLight;
+                                        Colors.themesDark :
+                                        Colors.themesLight;
 
                             Colors.theme = Colors.themeArr[Colors.themeIdx]
                             colorWindow.close()
@@ -59,6 +63,7 @@ Window {
         }
     }
 
+    // add shadow to the menu
     MultiEffect {
         source: colorsRect
         anchors.fill: colorsRect
@@ -70,5 +75,3 @@ Window {
         shadowVerticalOffset: 0
     }
 }
-
-// buttons colors - button action when pressed - animation

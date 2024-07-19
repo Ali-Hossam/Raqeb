@@ -7,6 +7,13 @@ Item {
     property string label : ""  // label under the slider
     property var sliderColor : []
     property bool isDarkMode : Colors.isDarkMode
+    property int temp : 0
+
+    onTempChanged:
+    {
+        // map temp from 0 - 120 to angle from 0 - 290
+        sliderCirc.nextAngle = (temp - 0) * (290 - 0) / (120 - 0) + 0
+    }
 
     // paint update
     onIsDarkModeChanged: sliderCirc.requestPaint()
@@ -15,12 +22,14 @@ Item {
     Canvas {
         id: sliderCirc
         anchors.fill: parent
-        property real currentAngle: 300   // slider current angle
-        property int nextAngle: 0   // the request next angle of the slider
+        property real currentAngle: 0   // slider current angle
         property double angleOffset : Math.PI * 120 / 180  // to make slider starts at angle 120
+        property int nextAngle: 0   // the request next angle of the slider
 
         onPaint: {
             var ctx = getContext("2d");
+
+            // circle coordinates
             var centerX = sliderCirc.width / 2
             var centerY = sliderCirc.height / 2
 
@@ -89,6 +98,8 @@ Item {
             // Draw the text
             ctx.fillText(label, centerX, centerY + radius + 24);
         }
+
+        onNextAngleChanged: timer_.start()
     }
 
     // Create a timer to smooth transition between different angles
@@ -113,7 +124,7 @@ Item {
     // add temperature text
     Text {
         id: temperature
-        text: "100" + "°C"
+        text: temp.toString() + "°C"
         font.bold: true
         font.pointSize: 16
         font.kerning: false
@@ -123,38 +134,11 @@ Item {
 
     // add temperatuer icon image
     IconImage {
-        source: "qrc:/resources/assets/temp.png"
+        source: "qrc:/resources/assets/icons/temp.png"
         x: temperature.x + 20
         y: temperature.y - 20
         width: 20
         fillMode: Image.PreserveAspectFit
         color: Colors.theme[1]
     }
-
-    // Column {
-    //     anchors.centerIn: parent
-
-    //     Button {
-    //         text: "I"
-    //         onClicked: {
-    //             if (sliderCirc.currentAngle <= 290) {
-    //                 sliderCirc.nextAngle = Math.min(sliderCirc.nextAngle + 10, 290); // Increment nextAngle by 10, but not exceed 360
-    //                 timer_.start();
-    //             } else {
-    //                 sliderCirc.currentAngle = 0;
-    //                 sliderCirc.nextAngle = 10;
-    //                 timer_.start();
-    //             }
-    //         }
-    //     }
-
-    //     Button {
-    //         text: "D"
-    //         onClicked: {
-    //             sliderCirc.nextAngle = Math.max(sliderCirc.nextAngle - 10, 0); // Increment nextAngle by 10, but not exceed 360
-    //             timer_.start();
-    //             console.log(Colors.isDarkMode)
-    //         }
-    //     }
-    // }
 }

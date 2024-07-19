@@ -1,14 +1,12 @@
 <RCC>
     <qresource prefix="/resources">
-        <file>assets/koala_dark.png</file>
-        <file>assets/koala_light.png</file>
-        <file>assets/moon.png</file>
-        <file>assets/star.png</file>
-        <file>assets/moon.svg</file>
-        <file>assets/moon1.svg</file>
-        <file>assets/sun1.svg</file>
-        <file>assets/temp.png</file>
         <file>assets/fonts/ruqaa.ttf</file>
-        <file>assets/spy.png</file>
+        <file>assets/icons/moon.png</file>
+        <file>assets/icons/moon.svg</file>
+        <file>assets/icons/moon1.svg</file>
+        <file>assets/icons/spy.svg</file>
+        <file>assets/icons/star.png</file>
+        <file>assets/icons/sun1.svg</file>
+        <file>assets/icons/temp.png</file>
     </qresource>
 </RCC>

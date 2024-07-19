@@ -9,7 +9,6 @@ import QtQuick.Window
 import Qt.labs.platform
 import QtQuick.Controls
 import QtQuick.Effects
-import MouseTracker
 
 Window {
     id: root
@@ -93,7 +92,7 @@ Window {
         id: monitorIcon
         icon.mask: true
         visible: true
-        icon.source: "qrc:/resources/assets/spy.png"
+        icon.source: "qrc:/resources/assets/icons/spy.svg"
 
         menu: Menu {
             MenuItem {
@@ -101,6 +100,7 @@ Window {
                 onTriggered:
                 {
                     root.visible = true;
+                    root.requestActivate()
                 }
             }
 
@@ -112,7 +112,4 @@ Window {
             }
         }
     }
-
-
-    // the shadow fills the root window !!!
 }

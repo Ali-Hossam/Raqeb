@@ -1,5 +1,6 @@
 /* custom made component used for control buttons
-such as exit, minimize and maximize*/
+such as exit, minimize and maximize
+*/
 
 import QtQuick
 

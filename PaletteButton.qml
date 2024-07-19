@@ -1,3 +1,7 @@
+/*
+This file contains the palette button which is the button the changes the current theme
+*/
+
 import QtQuick
 
 Rectangle {

@@ -1,0 +1,40 @@
+name: raqeb
+version: '1.0'
+summary: System Monitor Application
+description: |
+  A Widget application that monitors system resources and 
+  GPU/CPU temperatures.
+
+base: core22
+confinement: strict
+grade: stable
+
+apps:
+  raqeb:
+    command: bin/raqeb
+    environment:
+      QML2_IMPORT_PATH: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/qt6/qml
+    plugs:
+      - home
+      - network
+
+parts:
+  raqeb:
+    source: .
+    plugin: qmake
+    build-packages:
+      - build-essential
+      - qt6-qmake
+      - qt6-base-dev
+      - qt6-declarative-dev
+    stage-packages:
+      - qml6-module-qtquick
+      - qml6-module-qtquick-controls
+      - qml6-module-qtquick-layouts
+      - qml6-module-qtgraphicaleffects
+      - qml6-module-qtquick-windows
+      - libqt6gui6
+      - libqt6qml6
+      - libqt6quick6
+      - libqt6network6
+      - libqt6widgets6

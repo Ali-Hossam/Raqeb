@@ -1,3 +1,7 @@
+/*
+This file contains the main componenets of the widget including resources, temp and disk panels
+*/
+
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Shapes
@@ -49,8 +53,9 @@ Rectangle {
                         anchors.bottom: parent.bottom
                         width: parent.width
                         height: parent.height + 20
-                        label: "GPU"
+                        label: "CPU"
                         sliderColor: Colors.theme;
+                        temp: Cpu.cpuTemp
                     }
                 }
 
@@ -71,8 +76,9 @@ Rectangle {
                         anchors.bottom: parent.bottom
                         width: parent.width
                         height: parent.height + 20
-                        label: "CPU"
+                        label: "GPU"
                         sliderColor: Colors.theme;
+                        temp: Gpu.gpuTemp
                     }
                 }
             }
@@ -112,8 +118,10 @@ Rectangle {
                     }
 
                     UsageBar {
+                        id: cpuUsageBar
                         width: resourcesPanel.width - 30
                         anchors.left: parent.left
+                        value: Cpu.cpuUsage
                     }
                 }
 
@@ -129,14 +137,17 @@ Rectangle {
                     }
 
                     UsageBar {
+                        id: memUsageBar
                         width: resourcesPanel.width - 30
                         anchors.left: parent.left
+                        value: Memory.memUsage
                     }
                 }
 
                 Column {
                     spacing: 5
                     Text {
+                        id: gpuUsageBar
                         text: "gpu"
                         font.family: "Ubuntu"
                         font.bold: false
@@ -148,6 +159,7 @@ Rectangle {
                     UsageBar {
                         width: resourcesPanel.width - 30
                         anchors.left: parent.left
+                        value: Gpu.gpuUsage
                     }
                 }
             }
@@ -165,6 +177,7 @@ Rectangle {
                 anchors.margins: margin + 4
 
                 Text {
+                    id: diskText
                     text: "Disk Usage"
                     font.family: "Ubuntu"
                     font.bold: true
@@ -174,9 +187,13 @@ Rectangle {
                 }
 
                 PiePlot {
+                    anchors.top: diskText.bottom
+                    anchors.horizontalCenter: diskText.horizontalCenter
+                    anchors.topMargin: 6
+
                     height: parent.height - margin * 2.2
-                    radius: 60
                     theme: Colors.piePlotThemes[Colors.themeIdx]
+                    newUsage: Disk.diskUsage
                 }
             }
 

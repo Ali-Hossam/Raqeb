@@ -60,7 +60,11 @@ Rectangle {
             id: exitButton
             mainColor: "#FF4B4B"
             hoverColor: "brown"
-            onButtonClicked: root.visible = false
+            onButtonClicked:
+            {
+                themesWindow.visible = false
+                root.visible = false
+            }
         }
     }
 
@@ -94,8 +98,8 @@ Rectangle {
                 Image {
                     anchors.fill: parent
                     anchors.margins: 5
-                    source: themeMode.checked ? "qrc:/resources/assets/moon1.svg" :
-                                                "qrc:/resources/assets/sun1.svg"
+                    source: themeMode.checked ? "qrc:/resources/assets/icons/moon1.svg" :
+                                                "qrc:/resources/assets/icons/sun1.svg"
                 }
 
                 // add animation
@@ -138,7 +142,7 @@ Rectangle {
         font.family: myFont.font.family
         font.weight: myFont.font.weight
         font.styleName: myFont.font.styleName
-        font.pixelSize: 38
+        font.pixelSize: 37
         font.letterSpacing: 3
         color: Colors.isDarkMode ? "white" : "black"
     }
