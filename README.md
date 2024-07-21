@@ -2,6 +2,7 @@
 # Raqeb - System Monitoring Application
 
 Raqeb is a system monitoring application designed for Ubuntu that monitors CPU and GPU temperatures, usage, and disk and memory usage. It is specifically tailored to work with NVIDIA GPUs and requires the `nvidia-smi` utility for GPU monitoring.
+
 ![image](https://github.com/user-attachments/assets/b2363f9c-5dc9-4538-84db-389ad28a7566)
 
 ## Features
