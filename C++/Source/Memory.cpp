@@ -1,4 +1,4 @@
-#include "Memory.h"
+#include "C++/Header/Memory.h"
 
 // Class constructor
 Memory::Memory(QObject *parent)

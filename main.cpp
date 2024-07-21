@@ -1,10 +1,10 @@
 #include <QQmlApplicationEngine>
 #include <QApplication>
 #include <QIcon>
-#include "Memory.h"
-#include "cpu.h"
-#include "disk.h"
-#include "gpu.h"
+#include "C++/Header/Memory.h"
+#include "C++/Header/cpu.h"
+#include "C++/Header/disk.h"
+#include "C++/Header/gpu.h"
 
 #include <QQmlContext>
 

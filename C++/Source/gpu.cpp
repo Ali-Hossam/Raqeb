@@ -1,4 +1,4 @@
-#include "gpu.h"
+#include "C++/Header/gpu.h"
 
 /* function to execute shell commands*/
 std::string exec(const char* cmd)

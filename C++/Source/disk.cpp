@@ -1,4 +1,4 @@
-#include "disk.h"
+#include "C++/Header/disk.h"
 #include <sys/statvfs.h>
 
 Disk::Disk(QObject *parent)

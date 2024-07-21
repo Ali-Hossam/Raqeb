@@ -1,4 +1,4 @@
-#include "cpu.h"
+#include "C++/Header/cpu.h"
 
 // Function to check the given name starts with some prefix , "thermal_zone" in our case
 bool startsWith(const std::string& str, const std::string& prefix)

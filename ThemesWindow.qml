@@ -12,7 +12,7 @@ Window {
     width: 90
     color: "transparent"
 
-    flags: Qt.FramelessWindowHint | Qt.Window
+    flags: Qt.FramelessWindowHint | Qt.Window | Qt.Popup
     property color bkgColor : "#000000"
 
     Rectangle {
