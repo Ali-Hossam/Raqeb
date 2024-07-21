@@ -27,7 +27,7 @@ To install a packaged version of Raqeb, follow these steps:
 1. **Clone the Repository in HOME dir:**
 
     ```bash
-    git clone --branch setup https://github.com/Ali-Hossam/Raqeb-System-Monitor-App.git
+    git clone -b setup https://github.com/Ali-Hossam/Raqeb-System-Monitor-App.git
     cd Raqeb
     ```
 
@@ -46,7 +46,7 @@ To work with the source code and build Raqeb from scratch, follow these steps:
 1. **Clone the Repository:**
 
     ```bash
-    git clone --branch main https://github.com/Ali-Hossam/Raqeb-System-Monitor-App.git
+    git clone -b main https://github.com/Ali-Hossam/Raqeb-System-Monitor-App.git
     cd raqeb
     ```
 
