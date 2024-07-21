@@ -1,7 +1,7 @@
 ## Installation Steps
 1. Clone the repo in the HOME directory
 ```bash
-git clone
+git clone -b install https://github.com/Ali-Hossam/Raqeb.git
 ```
 
 2. Make `install.sh` executable
