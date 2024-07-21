@@ -1,0 +1,10 @@
+[Desktop Entry]
+version=1.0
+Type=Application
+Name=Raqeb
+Comment=System Monitoring Application
+Exec=~/Raqeb/Raqeb.sh
+Icon=~/.local/share/icons/hicolor/48x48/apps/RaqebIcon
+Terminal=false
+Categories=Utility;Application;
+
