@@ -1,15 +1,15 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
-        <file>MonitorWindow.qml</file>
-        <file>RoundedButton.qml</file>
-        <file>TopBar.qml</file>
-        <file>Colors.qml</file>
-        <file>CircularSlider.qml</file>
-        <file>UsageBar.qml</file>
-        <file>PiePlot.qml</file>
-        <file>PaletteButton.qml</file>
-				<file>qmldir</file>
-        <file>ThemesWindow.qml</file>
+        <file>qml/CircularSlider.qml</file>
+        <file>qml/Colors.qml</file>
+        <file>qml/main.qml</file>
+        <file>qml/MonitorWindow.qml</file>
+        <file>qml/PaletteButton.qml</file>
+        <file>qml/PiePlot.qml</file>
+        <file>qml/qmldir</file>
+        <file>qml/RoundedButton.qml</file>
+        <file>qml/ThemesWindow.qml</file>
+        <file>qml/TopBar.qml</file>
+        <file>qml/UsageBar.qml</file>
     </qresource>
 </RCC>

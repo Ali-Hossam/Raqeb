@@ -35,6 +35,6 @@ int main(int argc, char *argv[])
     rootContext->setContextProperty("Disk", &diskObj);
     rootContext->setContextProperty("Gpu", &gpuObj);
 
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
     return app.exec();
 }

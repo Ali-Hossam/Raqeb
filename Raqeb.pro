@@ -32,3 +32,16 @@ HEADERS += \
     C++/Header/cpu.h \
     C++/Header/disk.h \
     C++/Header/gpu.h
+
+DISTFILES += \
+    qml/CircularSlider.qml \
+    qml/Colors.qml \
+    qml/MonitorWindow.qml \
+    qml/PaletteButton.qml \
+    qml/PiePlot.qml \
+    qml/RoundedButton.qml \
+    qml/ThemesWindow.qml \
+    qml/TopBar.qml \
+    qml/UsageBar.qml \
+    qml/main.qml \
+    qml/qmldir
