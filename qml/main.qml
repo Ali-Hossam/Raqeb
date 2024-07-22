@@ -85,8 +85,8 @@ Window {
         shadowOpacity: 0.2
         shadowEnabled: true
         shadowColor: "black"
-        shadowHorizontalOffset: 3
-        shadowVerticalOffset: 0
+        // shadowHorizontalOffset: 3
+        // shadowVerticalOffset: 0
     }
 
     // create system tray icon for the application
