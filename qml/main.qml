@@ -31,6 +31,7 @@ Window {
         id: topBar
         width: parent.width - shadowOffset
         height: 40
+        x: shadowOffset / 2
         topLeftRadius: cornerRadius
         topRightRadius: cornerRadius
 
@@ -57,6 +58,7 @@ Window {
         id: mainWindow
         width: parent.width - shadowOffset
         height: parent.height - topBar.height - shadowOffset
+        x: shadowOffset / 2
         y: topBar.height
         bottomLeftRadius: cornerRadius
         bottomRightRadius: cornerRadius
@@ -71,8 +73,8 @@ Window {
         shadowOpacity: 0.2
         shadowEnabled: true
         shadowColor: "black"
-        shadowHorizontalOffset: 4
-        shadowVerticalOffset: 4
+        // shadowHorizontalOffset: 4
+        // shadowVerticalOffset: 4
     }
 
     // create shadow for the top bar
